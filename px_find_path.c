@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   px_err_msg.c                                       :+:      :+:    :+:   */
+/*   px_find_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 17:03:28 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/19 16:54:14 by tgrossma         ###   ########.fr       */
+/*   Created: 2021/08/19 11:55:59 by tgrossma          #+#    #+#             */
+/*   Updated: 2021/08/19 12:14:29 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 /*
-//prints a detailed error message
+//searches the env for the path variable, and returns a NULL-terminated array
+//of all paths, the array is freeable
 */
-void px_err_msg(char *ex, char *file)
+char	**px_find_path(char** envp)
 {
-	char *err_msg;
+	int	i;
+	char *path;
+	char **path_list;
 
-	err_msg = ft_strdup(strerror(errno));
-	if (!err_msg)
-		return ;
-	err_msg[0] = ft_tolower(err_msg[0]);
-	write(2, ex, ft_strlen(ex));
-	write(2, ": ", 2);
-	write(2, err_msg, ft_strlen(err_msg));
-	write(2, ": ", 2);
-	write(2, file, ft_strlen(file));
-	write(2, "\n", 1);
-	free(err_msg);
+	i = 0;
+	while (ft_strncmp(envp[i], "PATH=", 5))
+		i++;
+	path = ft_strtrim(envp[i], "PATH=");
+	path_list = ft_split(path, ':');
+	if (path)
+		free(path);
+	return (path_list);
 }

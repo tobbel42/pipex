@@ -22,7 +22,7 @@ int main (int argc, char **argv, char **envp)
 	i = 0;
 	while (p_list[i])
 	{
-		printf("%s\n", p_list[i])
+		printf("%s\n", p_list[i]);
 		//execve(p_list[1], { "cat", "env_test.c", NULL}, { NULL });
 		i++;
 	}

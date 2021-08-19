@@ -5,8 +5,9 @@ LIBS=libft/libft.a
 GNL_FLAG=-D BUFFER_SIZE=1
 GNL= ft_get_next_line/get_next_line.c \
 	ft_get_next_line/get_next_line_utils.c
-SRC=pipex.c \
-	px_err_msg.c
+SRC=pipex.c	\
+	px_err_msg.c \
+	px_check_command.c
 
 all:$(NAME)
 
