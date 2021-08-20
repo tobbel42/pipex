@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:03:28 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/19 16:54:14 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/20 14:29:36 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /*
 //prints a detailed error message
 */
-void px_err_msg(char *ex, char *file)
+void	px_err_msg(char *ex, char *file)
 {
-	char *err_msg;
+	char	*err_msg;
 
 	err_msg = ft_strdup(strerror(errno));
 	if (!err_msg)

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   px_find_path.c                                     :+:      :+:    :+:   */
+/*   split_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/19 11:55:59 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/19 12:14:29 by tgrossma         ###   ########.fr       */
+/*   Created: 2021/08/20 12:08:47 by tgrossma          #+#    #+#             */
+/*   Updated: 2021/08/20 14:06:30 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-/*
-//searches the env for the path variable, and returns a NULL-terminated array
-//of all paths, the array is freeable
-*/
-char	**px_find_path(char** envp)
+int main(int argc, char **argv, char **envp)
 {
-	int	i;
-	char *path;
-	char **path_list;
+	char **list;
 
-	i = 0;
-	while (ft_strncmp(envp[i], "PATH=", 5))
+	if (argc != 2)
+	{
+		write (2, "Error\n", 6);
+		return(0);
+	}
+	list = px_split_res(argv[1], ' ');
+	int i = 0;
+	while (list[i])
+	{
+		printf("%s\n", ft_strtrim(list[i], "\""));
 		i++;
-	path = ft_strtrim(envp[i], "PATH=");
-	path_list = ft_split(path, ':');
-	if (path)
-		free(path);
-	return (path_list);
+	}
+	execve(px_check_command(list[0], envp), list, envp);
+	return (1);
 }
