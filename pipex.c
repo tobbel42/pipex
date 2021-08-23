@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 14:58:31 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/23 16:13:41 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 17:34:52 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 
 	if (argc < 5)
-		return (-1);
+	{
+		write(2, "./pipex: too few arguments\n", 27);
+		return (1);
+	}
 	p_fd = px_input_file_handler(argv[1]);
 	i = 2;
 	while (i < argc - 2)
