@@ -9,6 +9,10 @@ SRC=pipex.c	\
 	px_err_msg.c \
 	px_check_command.c \
 	px_split_res.c \
+	px_split_res_utils.c \
+	px_input_file_handler.c \
+	px_output_file_handler.c \
+	px_write_to_file.c \
 	px_fork.c
 
 all:$(NAME)

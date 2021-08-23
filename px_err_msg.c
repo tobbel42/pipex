@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:03:28 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/20 14:29:36 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 15:28:37 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 /*
 //prints a detailed error message
+
 */
-void	px_err_msg(char *ex, char *file)
+void	px_err_msg(char *ex, char *file, int mode)
 {
 	char	*err_msg;
 
@@ -25,7 +26,10 @@ void	px_err_msg(char *ex, char *file)
 	err_msg[0] = ft_tolower(err_msg[0]);
 	write(2, ex, ft_strlen(ex));
 	write(2, ": ", 2);
-	write(2, err_msg, ft_strlen(err_msg));
+	if (mode == 0 && errno == 2)
+		write(2, "command not found", 17);
+	else
+		write(2, err_msg, ft_strlen(err_msg));
 	write(2, ": ", 2);
 	write(2, file, ft_strlen(file));
 	write(2, "\n", 1);

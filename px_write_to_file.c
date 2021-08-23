@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   px_input_file_handler.c                            :+:      :+:    :+:   */
+/*   px_write_to_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/23 12:05:34 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/23 15:20:47 by tgrossma         ###   ########.fr       */
+/*   Created: 2021/08/23 13:38:54 by tgrossma          #+#    #+#             */
+/*   Updated: 2021/08/23 13:41:56 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
 /*
-//tries to opens the input file, returns the filedescriptor
-//if the file can not be opened, an errormessage is printed
-//and the read end of a emptt pipe is returned
+//writes the contend of pipe p_fd to file o_fd
 */
-int	px_input_file_handler(char *argv)
+void	px_write_to_file(int p_fd, int o_fd)
 {
-	int	fd[2];
+	char	*line;
 
-	if (access(argv, R_OK) == -1)
+	line = get_next_line(p_fd);
+	while (line)
 	{
-		px_err_msg("./pipex", argv, 1);
-		pipe(fd);
-		close(fd[1]);
-		return (fd[0]);
+		write(o_fd, line, ft_strlen(line));
+		free (line);
+		line = get_next_line(p_fd);
 	}
-	else
-		return (open(argv, O_RDONLY));
 }

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_test.c                                       :+:      :+:    :+:   */
+/*   px_split_res.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/20 12:08:47 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/20 14:06:30 by tgrossma         ###   ########.fr       */
+/*   Created: 2021/08/23 11:20:18 by tgrossma          #+#    #+#             */
+/*   Updated: 2021/08/23 12:01:13 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef PX_SPLIT_RES_H
+# define PX_SPLIT_RES_H
 
-int main(int argc, char **argv, char **envp)
-{
-	char **list;
+void	quote_skip(char const *s, int *i);
+int		find_subs(char const *s, char c);
+int		unwind(char **ptr_tab, int n);
+int		fill_tab(char **ptr_tab, char *ptr, char c, int n_subs);
 
-	if (argc != 2)
-	{
-		write (2, "Error\n", 6);
-		return(0);
-	}
-	list = px_split_res(argv[1], ' ');
-	int i = 0;
-	while (list[i])
-	{
-		printf("%s\n", ft_strtrim(list[i], "\""));
-		i++;
-	}
-	execve(px_check_command(list[0], envp), list, envp);
-	return (1);
-}
+#endif
