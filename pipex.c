@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 14:58:31 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/23 15:44:10 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:13:41 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv, char **envp)
 		p_fd = px_fork(p_fd, argv[i], envp);
 		i++;
 	}
-	o_fd = px_output_file_handler(argv[argc - 1], 0);
+	o_fd = px_output_file_handler(argv[argc - 1]);
 	if (o_fd != -1)
 	{
 		p_fd = px_fork(p_fd, argv[i], envp);

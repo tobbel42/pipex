@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 14:33:47 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/23 15:20:25 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:23:26 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,49 +29,6 @@ static void	fork_cleanup(char *cmd, char **cmd_argv)
 		free(cmd_argv);
 	}
 }
-
-// static char **append_array(char *arg, char **array)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	**ret_array;
-
-// 	i = 0;
-// 	while (array[i])
-// 		i++;
-// 	ret_array = (char **)malloc(sizeof(char *) * i);
-// 	if (ret_array)
-// 	{
-// 		ret_array[0] = arg;
-// 		j = 0;
-// 		while (array[j])
-// 		{
-// 			ret_array[j + 1] = array[j];
-// 			j++;
-// 		}
-// 		ret_array[j] = NULL;
-// 	}
-// 	return (ret_array);
-// }
-
-// static char	**fork_input(char *argv, char **envp)
-// {
-// 	char	*cmd;
-// 	char	**cmd_argv;
-// 	char	**ret_array;
-
-// 	cmd = NULL;
-// 	ret_array = NULL;
-// 	cmd_argv = px_split_res(argv, ' ');
-// 	if (cmd_argv)
-// 	{
-// 		cmd = px_check_command(cmd_argv[0], envp);
-// 		if (cmd)
-// 			ret_array = append_array(cmd, cmd_argv);
-// 	}
-// 	fork_cleanup(cmd, cmd_argv);
-// 	return (ret_array);
-// }
 
 static void	fork_action(char **cmd_argv, char **envp, int *p_fd, int i_fd)
 {
@@ -97,6 +54,11 @@ static void	fork_action(char **cmd_argv, char **envp, int *p_fd, int i_fd)
 	free(cmd);
 }
 
+/*
+//opens a pipe, and tries to launch the command and
+//writes the output into the pipe.
+//the fd of read-end of pipe is returned.
+*/
 int	px_fork(int i_fd, char *argv, char **envp)
 {
 	int		p_fd[2];

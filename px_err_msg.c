@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 17:03:28 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/23 15:28:37 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:20:32 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 //prints a detailed error message
-
+//mode == 0 for if searching for commands
 */
 void	px_err_msg(char *ex, char *file, int mode)
 {

@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 12:15:59 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/19 16:54:46 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:19:57 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ static char	**unwind(char **paths)
 	return (NULL);
 }
 
+/*
+//adds the command name to the path, generating the absolut path
+//NULL on error
+*/
 static char	**px_gen_full_path(char *arg, char **envp)
 {
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: tgrossma <tgrossma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 16:15:37 by tgrossma          #+#    #+#             */
-/*   Updated: 2021/08/23 15:20:04 by tgrossma         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:13:29 by tgrossma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*px_check_command(char *arg, char **envp);
 char	**px_split_res(char const *s, char c);
 int		px_fork(int fd_in, char *argv, char **envp);
 int		px_input_file_handler(char *argv);
-int		px_output_file_handler(char *argv, int mode);
+int		px_output_file_handler(char *argv);
 void	px_write_to_file(int p_fd, int o_fd);
 #endif
